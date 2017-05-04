@@ -6,7 +6,7 @@
 * A dialog box will open, allowing a sound file to be selected (supported formats: WAV, MP3, OGG). For convenience, demo music (non-copyrighted) is included in the 'Resources' directory
 * Once a sound file is chosen, the main interface will now open. The user can drag and drop the ball to any position in arousal-valence space, in order to register their current emotional response.
 * Once done, simply close the window, and the data will be saved automatically. Data are stored in a CSV file in the 'Data' directory. By default, arousal and valence ratings are saved 10 times per second.
-* To take a continuous mood rating without playing any sound, use 'RUN_NO_SOUND.py' instead. To take a single 'snapshot' measure of mood (also without sound), use 'RUN_SNAPSHOT.py'.
+* To take a continuous mood rating without playing any sound, use `RUN_NO_SOUND.py` instead. To take a single 'snapshot' measure of mood (also without sound), use `RUN_SNAPSHOT.py`.
 * Example instructions ('PARTICIPANT_INSTRUCTIONS.docx') are included, featuring a screenshot of the application. Obviously, these might need to be adapted depending on what the particular experiment involves.
 * Further instructions for experimenters are also included ('EXPERIMENTER_INSTRUCTIONS.pdf').
 
