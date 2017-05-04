@@ -29,7 +29,6 @@ BALL_IMG = 'ball.png'
 
 
 def centre():
-
     # Places the window centre-screen
     win.update_idletasks()
     width = win.winfo_width()
@@ -40,7 +39,6 @@ def centre():
 
 
 def save_id(*args):
-
     # Saves the ID and closes the window
     global p_ID
     id_input = id_box.get()
@@ -51,9 +49,9 @@ def save_id(*args):
 win = Tk()
 win.bind('<Return>', save_id)
 win.resizable(width=False, height=False)  # make window non-resizable
-win.title('ID?')
+win.title('Participant ID:')
 win.iconbitmap(default=os.path.join(TOP_FOLDER, ICON))
-id_box = Entry(win)
+id_box = Entry(win, width=35)
 id_box.pack()
 id_box.focus_set()
 
@@ -73,7 +71,6 @@ SOUND_FILE = tkFileDialog.askopenfilename()
 # Load images for arousal/valence background and window icon
 init()
 os.environ['SDL_VIDEO_CENTERED'] = '1'  # centre window on screen
-# event.set_grab(True)
 BG_IMG = load(os.path.join(BG))
 ICON_IMG = load(ICON)
 
@@ -151,7 +148,7 @@ def av_grab():
     av_list.append([p_ID, test_date, test_time, song_time, arousal, valence])
 
 # Start recording arousal/ valence data
-measurement_resolution = 1
+measurement_resolution = 0.1
 av_thread = InfiniteTimer(measurement_resolution, av_grab)
 av_thread.start()
 
@@ -167,13 +164,11 @@ EXIT = False
 while not EXIT:
 
     for e in event.get():
-
         # While user holds mouse down over ball, set ball coordinates equal to mouse position
         if e.type == MOUSEBUTTONDOWN and ball.rect.collidepoint(mouse.get_pos()):
             drag = True
 
         if drag:
-
             # Stop updating ball position with mouse position if user lets go of mouse...
             if e.type == MOUSEBUTTONUP and e.button == 1:
                 drag = False
@@ -191,13 +186,11 @@ while not EXIT:
 
         # Save ball coordinates and timestamp on closing down
         if e.type == QUIT:
-
             # CLOSE THE THREAD!!!!
             av_thread.cancel()
 
             # Open a CSV file for writing arousal/ valence ratings
             if p_ID != '0':  # don't log data if ID of 0 is entered
-
                 with open(DATA_FILE, 'ab') as data_file:
                     writer = csv.writer(data_file, delimiter=',')
                     if os.stat(DATA_FILE).st_size == 0:
