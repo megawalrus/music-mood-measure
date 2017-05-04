@@ -50,9 +50,9 @@ def save_id(*args):
 win = Tk()
 win.bind('<Return>', save_id)
 win.resizable(width=False, height=False)  # make window non-resizable
-win.title('ID?')
+win.title('Participant ID:')
 win.iconbitmap(default=os.path.join(TOP_FOLDER, ICON))
-id_box = Entry(win)
+id_box = Entry(win, width=35)
 id_box.pack()
 id_box.focus_set()
 
@@ -144,7 +144,7 @@ def av_grab():
     # **** Need to get time since opened, too **** !!!!!!!!!!
 
 # Start recording arousal/ valence data
-measurement_resolution = 1
+measurement_resolution = 0.1
 av_thread = InfiniteTimer(measurement_resolution, av_grab)
 av_thread.start()
 

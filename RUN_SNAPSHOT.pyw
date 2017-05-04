@@ -48,9 +48,9 @@ def save_id(*args):
 win = Tk()
 win.bind('<Return>', save_id)
 win.resizable(width=False, height=False)  # make window non-resizable
-win.title('ID?')
+win.title('Participant ID:')
 win.iconbitmap(default=os.path.join(TOP_FOLDER, ICON))
-id_box = Entry(win)
+id_box = Entry(win, width=35)
 id_box.pack()
 id_box.focus_set()
 
