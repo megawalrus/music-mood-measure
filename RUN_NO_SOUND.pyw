@@ -25,6 +25,7 @@ AV_WIDTH = 700
 AV_HEIGHT = 700
 BG = os.path.join(RESOURCES_FOLDER, 'bg.png')
 BALL_IMG = 'ball.png'
+measurement_resolution = 0.1
 
 
 def centre():
@@ -144,7 +145,6 @@ def av_grab():
     # **** Need to get time since opened, too **** !!!!!!!!!!
 
 # Start recording arousal/ valence data
-measurement_resolution = 0.1
 av_thread = InfiniteTimer(measurement_resolution, av_grab)
 av_thread.start()
 

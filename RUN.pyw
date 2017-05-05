@@ -26,6 +26,7 @@ AV_WIDTH = 700
 AV_HEIGHT = 700
 BG = os.path.join(RESOURCES_FOLDER, 'bg.png')
 BALL_IMG = 'ball.png'
+measurement_resolution = 0.1
 
 
 def centre():
@@ -144,11 +145,10 @@ def av_grab():
     valence = (ball.rect.x + (ball.rect.width / 2)) - (AV_WIDTH / 2)
     arousal = (AV_HEIGHT - (ball.rect.y + (ball.rect.height / 2))) - (AV_HEIGHT / 2)
     test_time = datetime.datetime.now().time().strftime('%H:%M:%S')
-    song_time = round((time.time() - initial_time), 2)
+    song_time = round((time.time() - initial_time), 2) - measurement_resolution
     av_list.append([p_ID, test_date, test_time, song_time, arousal, valence])
 
 # Start recording arousal/ valence data
-measurement_resolution = 0.1
 av_thread = InfiniteTimer(measurement_resolution, av_grab)
 av_thread.start()
 
